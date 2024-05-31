@@ -6,8 +6,8 @@
 
 ## Install
 
-```
-$ npm install node-neb-muz
+```bash
+npm install node-neb-muz
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ Random song name.
 
 ## CLI
 
-```
+```bash
 $ npx node-neb-muz random-song
 
   Examples
@@ -37,7 +37,7 @@ $ npx node-neb-muz random-song
     Leave a Muffin for the Chihuahua
 ```
 
-```
+```bash
 $ npx node-neb-muz --help
 
   Usage
