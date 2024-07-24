@@ -14,7 +14,7 @@
 Locally in a project:
 
 ```js
-import randomSong from 'node-neb-muz/random-song';
+import randomSong from "node-neb-muz/random-song";
 
 console.log(await randomSong());
 //=> 'My Chamber Life'
