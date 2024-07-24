@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       meow:
-        specifier: ^10.1.1
+        specifier: ^10.1.5
         version: 10.1.5
 
 packages:
