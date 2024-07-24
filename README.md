@@ -6,17 +6,25 @@
 
 ## Install
 
-```bash
-npm install node-neb-muz
-```
+- To use locally in a project: `npm install node-neb-muz`
+- To use globally on the command line: `npm install -g node-neb-muz`
 
 ## Usage
+
+Locally in a project:
 
 ```js
 import randomSong from 'node-neb-muz/random-song';
 
 console.log(await randomSong());
 //=> 'My Chamber Life'
+```
+
+Globally on the command line (use `npx` if you don't want to install):
+
+```bash
+$ (npx) node-neb-muz random-song
+Velocity Squared
 ```
 
 ## API
