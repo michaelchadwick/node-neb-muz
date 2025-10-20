@@ -21,4 +21,4 @@ jobs:
           cache: pnpm
       - run: pnpm install --ignore-scripts
       - name: publish
-        run: pnpm publish
+        run: pnpm publish --no-git-checks
