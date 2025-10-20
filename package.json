@@ -1,6 +1,6 @@
 {
   "name": "node-neb-muz",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Tool for discovering things about the San Diego music legend Nebyoolae",
   "exports": {
     "./random-song": "./src/random-song.js"
