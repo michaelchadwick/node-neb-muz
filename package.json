@@ -1,6 +1,6 @@
 {
   "name": "node-neb-muz",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Tool for discovering things about the San Diego music legend Nebyoolae",
   "exports": {
     "./random-song": "./src/random-song.js"
@@ -26,23 +26,23 @@
   },
   "homepage": "https://github.com/michaelchadwick/node-neb-muz#readme",
   "dependencies": {
-    "meow": "^10.1.5"
+    "meow": "^14.0.0"
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">= 22"
   },
   "files": [
     "bin/",
     "data/",
     "src/"
   ],
-  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195",
+  "packageManager": "pnpm@10.18.3",
   "devDependencies": {
-    "@eslint/js": "^9.7.0",
-    "eslint": "^9.7.0",
-    "eslint-config-prettier": "9.1.0",
-    "globals": "^15.8.0",
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "^16.4.0",
     "husky": "9.1.1",
-    "prettier": "3.3.3"
+    "prettier": "3.6.2"
   }
 }

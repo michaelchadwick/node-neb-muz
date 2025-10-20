@@ -11,16 +11,22 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.MY_TOKEN }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install
       - name: Validate releaseType
-        run: releaseType=${{ github.event.inputs.releaseType }} node .github/scripts/validateReleaseType.js
+        run: pnpx in-string-list ${{ github.event.inputs.releaseType }} major,minor,patch
       - name: Setup Git
         run: |
           git config --global user.name "Michael Chadwick"
           git config --global user.email "mike@neb.host"
       - name: Increment Version
-        run: npm version ${{ github.event.inputs.releaseType }}
+        run: pnpx versionup --level ${{ github.event.inputs.releaseType }}
       - name: Push Changes
         run: git push --follow-tags
