@@ -11,14 +11,39 @@ permissions:
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. checkout the repo
       - uses: actions/checkout@v5
+      # 2. Install node and pnpm
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - run: pnpm install --ignore-scripts
-      - name: publish
-        run: pnpm publish --no-git-checks
+      # 3. Grab the OIDC token that npm will accept
+      - name: Get npm OIDC token
+        id: npm-token
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const token = await core.getIDToken({
+              audience: 'https://registry.npmjs.org'
+            })
+            core.setOutput('token', token)
+      # 4. Create a release on tags
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: ${{ github.event.head_commit.message }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      # 5. Install deps and publish
+      - name: Publish with pnpm
+        run: |
+          pnpm install --ignore-scripts
+          pnpm publish --registry https://registry.npmjs.org --access public --no-git-checks
