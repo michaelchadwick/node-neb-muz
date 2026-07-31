@@ -22,5 +22,7 @@ if (command === "random-song") {
   process.exit(0);
 }
 
-process.stdout.write("Unkown Command. Use --help for a list of options" + "\n");
+process.stdout.write(
+  "Unknown command. Use --help for a list of options" + "\n",
+);
 process.exit(1);
