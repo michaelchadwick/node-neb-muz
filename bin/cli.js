@@ -1,8 +1,16 @@
 #!/usr/bin/env node
+import fs from "fs";
 import meow from "meow";
 import randomSong from "../src/random-song.js";
 
-const VERSION = "0.2";
+// Read the content of package.json
+const packageJsonContent = fs.readFileSync("./package.json", "utf8");
+
+// Parse the JSON data
+const packageInfo = JSON.parse(packageJsonContent);
+
+// Access the version property
+const appVersion = packageInfo.version;
 
 const cli = meow(
   `
@@ -22,7 +30,7 @@ const [command] = cli.input;
 
 switch (command) {
   case "version": {
-    process.stdout.write(VERSION + "\n");
+    process.stdout.write(appVersion + "\n");
     process.exit(0);
     break;
   }
